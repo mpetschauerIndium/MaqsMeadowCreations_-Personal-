@@ -1,0 +1,75 @@
+@page "/contact"
+
+<PageTitle>Contact</PageTitle>
+
+<h1>Contact Maq's Meadow Creations</h1>
+<p class="text-muted mb-4">Have a question about a piece, shipping, or a custom design? Reach out and we'll respond quickly.</p>
+
+<div class="row g-4">
+    <div class="col-lg-6">
+        <div class="card shadow-sm border-0 h-100">
+            <div class="card-body">
+                <h4>Email</h4>
+                <p class="mb-3">Email <a href="mailto:madnaturerelated@gmail.com">madnaturerelated@gmail.com</a> any time. Include photos of your flowers if you have them!</p>
+                <h4>Studio hours</h4>
+                <p class="mb-3">Weekdays 9am–5pm (EST). Weekend pickups by appointment.</p>
+                <h4>Payment guidance</h4>
+                <p class="mb-0">We send secure embedded checkout links for invoices and deposits. No payment details are ever stored on our servers.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card shadow-sm border-0 h-100">
+            <div class="card-body">
+                <h4>Send a quick note</h4>
+                <EditForm Model="message" OnValidSubmit="HandleSubmit">
+                    <DataAnnotationsValidator />
+
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <InputText class="form-control" @bind-Value="message.Name" />
+                        <ValidationMessage For="() => message.Name" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <InputText class="form-control" @bind-Value="message.Email" />
+                        <ValidationMessage For="() => message.Email" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Message</label>
+                        <InputTextArea class="form-control" rows="4" @bind-Value="message.Body" />
+                        <ValidationMessage For="() => message.Body" />
+                    </div>
+                    <button class="btn btn-primary" type="submit">Send message</button>
+                    @if (sent)
+                    {
+                        <span class="text-success ms-3">Thanks! We'll reach back out soon.</span>
+                    }
+                </EditForm>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private readonly ContactMessage message = new();
+    private bool sent;
+
+    private void HandleSubmit()
+    {
+        sent = true;
+    }
+
+    private class ContactMessage
+    {
+        [Required]
+        public string Name { get; set; } = string.Empty;
+
+        [Required, EmailAddress]
+        public string Email { get; set; } = string.Empty;
+
+        [Required]
+        [MaxLength(1000)]
+        public string Body { get; set; } = string.Empty;
+    }
+}
