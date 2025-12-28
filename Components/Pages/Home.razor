@@ -1,7 +1,98 @@
-﻿@page "/"
+@page "/"
 
-<PageTitle>Home</PageTitle>
+<PageTitle>Maq's Meadow Creations</PageTitle>
 
-<h1>Hello, world!</h1>
+<section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content container">
+        <p class="eyebrow">Pressed Flower Jewelry • Handcrafted in Small Batches</p>
+        <h1>Botanical keepsakes inspired by the meadow.</h1>
+        <p class="lead">Necklaces, bracelets, rings, earrings, coasters, wall pieces & bespoke heirlooms made with locally foraged blooms.</p>
+        <div class="d-flex flex-wrap gap-3">
+            <NavLink class="btn btn-light btn-lg" href="stock">Explore the collection</NavLink>
+            <NavLink class="btn btn-outline-light btn-lg" href="custom">Request a custom piece</NavLink>
+        </div>
+    </div>
+</section>
 
-Welcome to your new app.
+<section class="container my-5">
+    <div class="row g-4 align-items-center">
+        <div class="col-lg-6">
+            <div class="card shadow-sm border-0 h-100 garden-card">
+                <div class="card-body">
+                    <p class="eyebrow text-muted">What we make</p>
+                    <h2 class="card-title">Hand-pressed, hand-poured, and made to last</h2>
+                    <p class="card-text">Every flower is foraged locally, pressed at peak color, and preserved in crystal-clear resin. Hardware is gold-fill or sterling silver so your everyday pieces stay beautiful. Each item ships with care instructions and gift-ready packaging.</p>
+                    <ul class="feature-list">
+                        <li>Everyday staples: necklaces, bracelets, rings, and earrings</li>
+                        <li>Home accents: coasters, wall pieces, and statement trays</li>
+                        <li>Heirloom projects: bridal bouquets, memorial blooms, and milestone keepsakes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card shadow-sm border-0 h-100 payment-card">
+                <div class="card-body">
+                    <p class="eyebrow text-muted">Checkout your way</p>
+                    <h3 class="card-title">Embedded, secure payment options</h3>
+                    <p class="card-text">We rely on trusted embedded payment partners so you can check out safely without leaving the site. All payments are encrypted and support popular digital wallets.</p>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge text-bg-light">Card + ACH</span>
+                        <span class="badge text-bg-light">Apple Pay / Google Pay</span>
+                        <span class="badge text-bg-light">Shop Pay</span>
+                    </div>
+                    <div class="mt-3 small text-muted">Want to reserve a piece? Start with a 25% deposit and we'll confirm the final payment once your jewelry is ready.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container mb-5">
+    <div class="row g-4 text-center">
+        <div class="col-md-4">
+            <div class="pill-card h-100">
+                <h4>Locally sourced florals</h4>
+                <p class="text-muted">Every bloom is gathered by the owners from nearby meadows and gardens, supporting sustainable growth.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="pill-card h-100">
+                <h4>Mindful craftsmanship</h4>
+                <p class="text-muted">Pieces are poured, sanded, and polished by hand for a glassy finish that lets the flowers shine.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="pill-card h-100">
+                <h4>Custom storytelling</h4>
+                <p class="text-muted">From bouquets to petals saved on a special walk, we turn your flowers into wearable memories.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container pb-5">
+    <div class="row g-4">
+        <div class="col-lg-7">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-body">
+                    <p class="eyebrow text-muted">For florists, brides, and gift-givers</p>
+                    <h3>Ready to start a custom order?</h3>
+                    <p class="text-muted">Tell us about your flowers, your story, and your timeline. We'll respond with design ideas and a secure invoice link.</p>
+                    <NavLink class="btn btn-primary" href="custom">Start a custom request</NavLink>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-body">
+                    <p class="eyebrow text-muted">Questions?</p>
+                    <h4>Contact the artist</h4>
+                    <p class="text-muted">Email <a href="mailto:madnaturerelated@gmail.com">madnaturerelated@gmail.com</a> or use the contact form. We're happy to help you pick the perfect piece.</p>
+                    <NavLink class="btn btn-outline-primary" href="contact">Go to contact</NavLink>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

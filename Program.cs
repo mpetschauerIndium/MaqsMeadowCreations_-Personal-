@@ -1,10 +1,28 @@
 using MaqsMeadowCreations.Components;
+using MaqsMeadowCreations.Data;
+using MaqsMeadowCreations.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+{
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+    if (!string.IsNullOrWhiteSpace(connectionString))
+    {
+        options.UseSqlServer(connectionString);
+    }
+    else
+    {
+        options.UseInMemoryDatabase("MaqsMeadowCreations");
+    }
+});
+
+builder.Services.AddScoped<JewelryCatalogService>();
 
 var app = builder.Build();
 

@@ -1,0 +1,112 @@
+@page "/custom"
+
+<PageTitle>Custom Jewelry Request</PageTitle>
+
+<h1>Design your own pressed flower piece</h1>
+<p class="text-muted mb-4">Share your vision and we'll follow up with sketches, pricing, and a secure embedded payment link.</p>
+
+<EditForm Model="request" OnValidSubmit="HandleSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="row g-3">
+        <div class="col-md-6">
+            <label class="form-label">Name</label>
+            <InputText class="form-control" @bind-Value="request.Name" />
+            <ValidationMessage For="() => request.Name" />
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Email</label>
+            <InputText class="form-control" @bind-Value="request.Email" />
+            <ValidationMessage For="() => request.Email" />
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Phone (optional)</label>
+            <InputText class="form-control" @bind-Value="request.Phone" />
+            <ValidationMessage For="() => request.Phone" />
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Preferred piece</label>
+            <InputSelect class="form-select" @bind-Value="request.PreferredItemType">
+                <option value="">Select an option</option>
+                @foreach (var option in preferredPieces)
+                {
+                    <option value="@option">@option</option>
+                }
+            </InputSelect>
+            <ValidationMessage For="() => request.PreferredItemType" />
+        </div>
+        <div class="col-md-12">
+            <label class="form-label">Flower details</label>
+            <InputTextArea class="form-control" rows="3" @bind-Value="request.FlowerDetails" />
+            <div class="form-text">Tell us which flowers you'd like to use (your own or ours), colors, and any sentimental details.</div>
+            <ValidationMessage For="() => request.FlowerDetails" />
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Metal preference</label>
+            <InputText class="form-control" placeholder="Gold-fill, sterling silver, etc." @bind-Value="request.MetalPreference" />
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Budget (USD)</label>
+            <InputNumber class="form-control" @bind-Value="request.Budget" />
+            <ValidationMessage For="() => request.Budget" />
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Ideal timeline</label>
+            <InputText class="form-control" placeholder="e.g., mid-June" @bind-Value="request.Timeline" />
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Payment preference</label>
+            <InputSelect class="form-select" @bind-Value="request.PaymentPreference">
+                <option value="">Choose a payment option</option>
+                <option>Embedded card checkout</option>
+                <option>Apple Pay / Google Pay</option>
+                <option>Split deposit + final payment</option>
+            </InputSelect>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Additional details</label>
+            <InputTextArea class="form-control" rows="3" placeholder="Engraving, sizing, or inspiration links" @bind-Value="request.AdditionalNotes" />
+        </div>
+    </div>
+
+    <div class="d-flex flex-wrap gap-3 align-items-center mt-4">
+        <button class="btn btn-primary" type="submit">Submit request</button>
+        @if (submitted)
+        {
+            <span class="text-success">Thanks! We'll reply within 24 hours with next steps.</span>
+        }
+    </div>
+</EditForm>
+
+<section class="mt-5 p-4 rounded-4 bg-light border">
+    <h4>How custom projects work</h4>
+    <ol class="mb-0">
+        <li>Share your story and flowers using the form above.</li>
+        <li>We confirm design options, pricing, and timing.</li>
+        <li>Receive a secure, embedded payment link (deposit or full).</li>
+        <li>Approve final photos before we ship your keepsake.</li>
+    </ol>
+</section>
+
+@code {
+    private readonly List<string> preferredPieces =
+    [
+        "Necklace",
+        "Bracelet",
+        "Ring",
+        "Earrings",
+        "Coaster",
+        "Wall Piece",
+        "Keepsake Tray",
+        "Other"
+    ];
+
+    private readonly CustomRequestModel request = new();
+    private bool submitted;
+
+    private void HandleSubmit()
+    {
+        submitted = true;
+    }
+}
